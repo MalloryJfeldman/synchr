@@ -51,11 +51,14 @@ synchrA <- function (data, lag.max=1, window = 0, by = 0) {
     cc_rowtimes <- seq(from = 1, to = length(data[,2]), by = window)
     cc_rowtimes <- cc_rowtimes[1:window_number]
     rownames(windowed_cc) <- sapply(cc_rowtimes, function(x)paste0(paste0(x), "-",paste0(window-1+x)))
-    max_cc <- max(windowed_cc)
+   # max_cc <- max(windowed_cc)
+    #need to compare absolute values
+    max_cc <-windowed_cc[which.max(abs(windowed_cc))]
     max_cc_time <- colnames(windowed_cc)[as.vector(which(windowed_cc == max_cc, arr.ind=TRUE))[2]]
-    avg_windowed_cc <- matrix(colMeans(windowed_cc), ncol = dim(windowed_cc)[2])
+    avg_windowed_cc <- matrix(colMeans(windowed_cc, na.rm = T), ncol = dim(windowed_cc)[2])
     colnames(avg_windowed_cc) <- colnames(windowed_cc)
-    max_avg_cc <- max(avg_windowed_cc)
+    #max_avg_cc <- max(avg_windowed_cc)
+    max_avg_cc <- avg_windowed_cc[which.max(abs(avg_windowed_cc))]
     max_avg_cc_time <- colnames(avg_windowed_cc)[avg_windowed_cc[1, ] == max_avg_cc]
     
     #final object
@@ -88,11 +91,14 @@ synchrA <- function (data, lag.max=1, window = 0, by = 0) {
     cc_rowtimes <- seq(from = 1, to = length(data[,2]), by = by)
     cc_rowtimes <- cc_rowtimes[1:window_number]
     rownames(windowed_cc) <- sapply(cc_rowtimes, function(x)paste0(paste0(x), "-",paste0(window-1+x)))
-    max_cc <- max(windowed_cc)
+   # max_cc <- max(windowed_cc)
+    #need to compare absolute values
+    max_cc <-windowed_cc[which.max(abs(windowed_cc))]
     max_cc_time <- colnames(windowed_cc)[as.vector(which(windowed_cc == max_cc, arr.ind=TRUE))[2]]
-    avg_windowed_cc <- matrix(colMeans(windowed_cc), ncol = dim(windowed_cc)[2])
+    avg_windowed_cc <- matrix(colMeans(windowed_cc, na.rm = T), ncol = dim(windowed_cc)[2])
     colnames(avg_windowed_cc) <- colnames(windowed_cc)
-    max_avg_cc <- max(avg_windowed_cc)
+   # max_avg_cc <- max(avg_windowed_cc)
+    max_avg_cc <- avg_windowed_cc[which.max(abs(avg_windowed_cc))]
     max_avg_cc_time <- colnames(avg_windowed_cc)[avg_windowed_cc[1, ] == max_avg_cc]
     
     #final object
