@@ -13,4 +13,3 @@ synchr.read <- function(data) {
   #this ouputs the list, although user should save function to an object
   return(dyad.data)
 }
-dyad.data<-synchr.read(data = "~/Desktop/IBI_Series")
