@@ -6,7 +6,7 @@
 #'@param window, Window size. Must be a non-negative integer.
 #'@param by, Overlap value for specifying overlapping windows.
 #'@export
-synchrA <- function (data, lag.max=1, window = 0, by = 0) {
+synchr.analyze <- function (data, lag.max=1, window = 0, by = 0) {
   ##prem check
   # if(!lag.max == & !window)
   #   stop("lag or window should be non negative integers.")
