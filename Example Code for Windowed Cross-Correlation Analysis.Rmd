@@ -1,0 +1,52 @@
+---
+title: "Example Windowed Cross-Correlations"
+author: "Mallory Feldman"
+date: "4/8/2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(devtools)
+install_github("MalloryJfeldman/synchr")
+library(synchr)
+```
+
+```{r}
+dyad.data<-synchr.read(data = "~/Dropbox/ResearchProjects/PE-Card/CompPsychProject/Data/IBI_Series")
+head(dyad.data[[1]])
+```
+
+```{r}
+synchr.ts(dyad.data)
+```
+
+```{r}
+#initializing list to store dataframes with all correlation coefficients from windowed cross-correlations (by dyad)
+windowedcorrlist <- list()
+#initializing list to store dataframes with the averrage windowed cross-correlations (by dyad)
+avgwindowedcorrlist <- list()
+
+for (p in 1:length(dyad.data)) {
+  data <- dyad.data[[p]]
+  synchrcorrs <- synchr.analyze(data, window = 5) #might want to add a verbose function
+  windowedcorrlist[[p]] <- synchrcorrs$windowed_cc
+  avgwindowedcorrlist[[p]] <- synchrcorrs$avg_windowed_cc
+} #still outputting cat
+
+head(windowedcorrlist[[1]])
+head(avgwindowedcorrlist[[1]])
+```
+
+```{r}
+synchr.barplots(avgwindowedcorrlist) #Could possibly add dyad ID to plot titles
+```
+
+```{r}
+synchstyles <- synchr.classify(avgwindowedcorrlist)
+head(synchstyles)
+```
+
