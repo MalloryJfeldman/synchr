@@ -1,6 +1,11 @@
-###analysis###
-#Jenny and Lan#
-
+#'@name synchr.analyze
+#'@title Custom function to run cross-correlation analysis on dyadic time series data.
+#'@description synchr.analyze takes data objects with columns time, series 1, and series 2 and performs cross-correlation or windowed cross-correlation analysis.
+#'@param data, An optional data frame, list or environment.
+#'@param lag.max, Number of lag periods. Must be a non-negative integer.
+#'@param window, Window size. Must be a non-negative integer.
+#'@param by, Overlap value for specifying overlapping windows.
+#'@export
 synchrA <- function (data, lag.max=1, window = 0, by = 0) {
   ##prem check
   # if(!lag.max == & !window)
@@ -71,7 +76,7 @@ synchrA <- function (data, lag.max=1, window = 0, by = 0) {
         max_avg_cc_time = max_avg_cc_time
       )
       cat("The maximum averaged windowed cross-correlatin is ", max_avg_cc,
-          ", and it is at ", mac_avg_cc_time,". \n")
+          ", and it is at ", max_avg_cc_time,". \n")
   }
   ##when there is overlapped window
   if(window > 0 & !by==0){
@@ -111,7 +116,7 @@ synchrA <- function (data, lag.max=1, window = 0, by = 0) {
       max_avg_cc_time = max_avg_cc_time
     )
     cat("The maximum averaged windowed cross-correlatin is ", max_avg_cc,
-        ", and it is at ", mac_avg_cc_time,". \n")
+        ", and it is at ", max_avg_cc_time,". \n")
   }
       return(object)
 }
