@@ -36,8 +36,9 @@ synchr.analyze <- function (data, lag.max=1, window = 0, by = 0) {
      max_cc     = max_cc,
      max_cc_time = max_cc_time
     )
-    cat("The maximum cross-correlatin is ", max_cc, 
-        ", and it is at lag", max_cc_time,". \n" )
+    #commented out on 042020 by lan 
+  #   cat("The maximum cross-correlatin is ", max_cc, 
+  #       ", and it is at lag", max_cc_time,". \n" )
   }
   ##when a window size is specified by no overlap
   if(window > 0 & by ==0){
@@ -75,8 +76,8 @@ synchr.analyze <- function (data, lag.max=1, window = 0, by = 0) {
         max_cc_time    = max_cc_time,
         max_avg_cc_time = max_avg_cc_time
       )
-      cat("The maximum averaged windowed cross-correlatin is ", max_avg_cc,
-          ", and it is at ", max_avg_cc_time,". \n")
+      # cat("The maximum averaged windowed cross-correlatin is ", max_avg_cc,
+      #     ", and it is at ", max_avg_cc_time,". \n")
   }
   ##when there is overlapped window
   if(window > 0 & !by==0){
@@ -115,8 +116,8 @@ synchr.analyze <- function (data, lag.max=1, window = 0, by = 0) {
       max_cc_time    = max_cc_time,
       max_avg_cc_time = max_avg_cc_time
     )
-    cat("The maximum averaged windowed cross-correlatin is ", max_avg_cc,
-        ", and it is at ", max_avg_cc_time,". \n")
+    # cat("The maximum averaged windowed cross-correlatin is ", max_avg_cc,
+    #     ", and it is at ", max_avg_cc_time,". \n")
   }
       return(object)
 }
