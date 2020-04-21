@@ -1,7 +1,7 @@
 #'@name synchr.ts
 #'@title Dyadic Time Series Plots.
 #'@description Generates simple time series plot for each element in list.
-#'@param datalist, list containing dyadic data.
+#'@param raw_data_list, list containing dyadic data.
 #'@export
 synchr.ts <- function (raw_data_list) {
   par(mfrow = c(3,2))
