@@ -29,7 +29,7 @@ synchr.classify <- function(corr_data_list, threshold = 0.10) { #will want a dif
             # AND the |lag0 coef| is less than or equal to the threshold value.
             # AND the |lag1 coef| is less than or equal to the threshold value.
             # Else, the code applies an "NA"
-            (abs(`lag0`) < threshold & abs(`lag0`) < threshold & abs(`lag1`) < threshold), "leader-leader", NA
+            (abs(`lag-1`) < threshold & abs(`lag0`) < threshold & abs(`lag1`) < threshold), "leader-leader", NA
           )))))
   return(classified)
 }
